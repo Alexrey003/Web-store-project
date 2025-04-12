@@ -1,0 +1,45 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Archivos de entorno
+.env
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos de cache de pytest
+.pytest_cache/
+
+# Archivos de configuración o temporales de VSCode
+.vscode/
+*.code-workspace
+
+# Tailwind CSS / Node.js
+node_modules/
+package-lock.json
+dist/
+*.css.map
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log (si llegas a generarlos)
+*.log
+
+# Bases de datos locales (por si alguna vez haces dumps o sqlite temporal)
+*.sqlite3
+*.db
+*.sql
+
+# Archivos de pruebas o test outputs
+coverage/
+htmlcov/
+*.cover
+*.tmp
+
+# Carpetas de compilación si generás algo con herramientas externas
+build/
