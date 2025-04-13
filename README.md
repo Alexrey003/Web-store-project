@@ -25,6 +25,16 @@ Todas estas funcionalidades siguen en desarrollo.
 ## Capturas de Pantalla.
 Aqui presentare todas las capturas de pantalla del proyecto una vez finalizado.
 
+## 📣Disclaimer
+Este proyecto es de carácter académico y personal.
+
+Las imagenes de productos mostradas en esta aplicación son obtenidas directamente desde las páginas oficiales de sus respectivos vendedores.
+
+Este proyecto **no tiene ningun fin comercial** y **no genera ningún tipo de ingreso**.
+Las imagenes se utilizan unicamente con el propósito de demostrar la funcionalidad técnica del sistema.
+
+Todos los derechos pertenecen a sus respectivas marcas.
+
 ## 📌Autor
 **Alexis Emanuel Reynoso Munive**
 
