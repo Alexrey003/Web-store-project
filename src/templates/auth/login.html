@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Inicio sesión | Web Store{% endblock %}
+
+{% block content %}
+<main class="max-w-md mx-auto my-12 p-8 bg-white rounded-lg shadow-md">
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Iniciar Sesión</h1>
+        <p class="text-gray-600">Ingresa tus credenciales para acceder a tu cuenta</p>
+    </div>
+    <form class="space-y-6" method="POST" action="{{ url_for('auth.login') }}">
+        <div>
+            <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Usuario</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                placeholder="Ingresa tu usuario">
+        </div>
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                placeholder="Ingresa tu contraseña">
+        </div>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <input 
+                    id="remember-me" 
+                    name="remember-me" 
+                    type="checkbox" 
+                    class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+                <label for="remember-me" class="ml-2 block text-sm text-gray-700">Recordarme</label>
+            </div>
+            <div class="text-sm">
+                <a href="#" class="font-medium text-purple-600 hover:text-purple-500">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
+        <div>
+            <button 
+                type="submit" 
+                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-300">
+                Iniciar Sesión
+            </button>
+        </div>
+    </form>
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+            ¿No tienes una cuenta? 
+            <a href="#" class="font-medium text-purple-600 hover:text-purple-500">Regístrate aquí</a>
+        </p>
+    </div>
+</main>
+{% endblock %}

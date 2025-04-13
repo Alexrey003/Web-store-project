@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Registro Usuarios | Web Store{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="bg-purple-200 p-8 rounded shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center text-purple-600 mb-6">Registro de Usuario</h2>
+        <form method="POST" action="{{ url_for('auth.register') }}">
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium">Nombre</label>
+            <input type="text" name="name" class="w-full border border-gray-500 p-2 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="lastname" class="block text-sm font-medium">Apellido</label>
+            <input type="text" name="lastname" class="w-full border border-gray-500 p-2 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="address" class="block text-sm font-medium">Dirección</label>
+            <input type="text" name="address" class="w-full border border-gray-400 p-2 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="phone" class="block text-sm font-medium">Teléfono</label>
+            <input type="text" name="phone" class="w-full border border-gray-400 p-2 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium">Correo Electrónico</label>
+            <input type="email" name="email" class="w-full border border-gray-400 p-2 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="username" class="block text-sm font-medium">Usuario</label>
+            <input type="text" name="username" class="w-full border border-gray-400 p-2 rounded" required>
+        </div>
+        <div class="mb-6 relative">
+            <label for="password" class="block text-sm font-medium">Contraseña</label>
+            <input type="password" id="password" name="password" class="w-full border border-gray-400 p-2 rounded pr-10" required>
+            <button type="button" onclick="togglePassword()" class="absolute right-2 top-9 text-sm text-gray-500 hover:text-purple-600">
+                👁️
+            </button>
+        </div>
+        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded cursor-pointer">
+            Registrarse
+        </button>
+        </form>
+    </div>
+</div>
+
+{% block script %}
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
+</script>
+{% endblock %}
+{% endblock %}
