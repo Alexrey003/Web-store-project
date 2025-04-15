@@ -1,10 +1,38 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-admin.html' %}
 
-{% block title %}Inicio | Web Store{% endblock %}
+{% block title %}Panel de Administrador | Web Store{% endblock %}
 
 {% block content %}
-<section class="container mx-auto p-8">
-    <h1 class="text-4xl font-bold text-purple-600 text-center mb-6">Bienvenido a la Web Store</h1>
-    <p class="text-center text-lg">Hola administradores</p>
-</section>
+<div class="min-h-screen bg-gray-100 py-8 px-6">
+    <div class="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Panel de Administración</h1>
+        <p class="text-gray-600 mb-10">Bienvenido, {{ current_user.username if current_user.is_authenticated }}. Aquí puedes gestionar el contenido del sitio.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Gestión de Productos -->
+            <a href="{{ url_for('admin.manage_products') }}" class="group bg-gray-50 border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center justify-center transition-all duration-300 hover:bg-purple-300 hover:border-purple-300 hover:shadow-md my-4">
+                <span class="text-xl font-semibold mb-3 text-gray-800 transition-colors duration-300 group-hover:text-purple-600">Gestionar Productos</span>
+                <span class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-purple-500">Agregar, editar o eliminar productos</span>
+            </a>
+
+            <!-- Ver Órdenes -->
+            <a href="{{ url_for('admin.see_orders') }}" class="group bg-gray-50 border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center justify-center transition-all duration-300 hover:bg-purple-300 hover:border-purple-300 hover:shadow-md my-4">
+                <span class="text-xl font-semibold mb-3 text-gray-800 transition-colors duration-300 group-hover:text-purple-600">Ver Órdenes</span>
+                <span class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-purple-500">Consulta las órdenes realizadas por los clientes</span>
+            </a>
+
+            <!-- Enviar Correos -->
+            <a href="{{ url_for('admin.send_email') }}" class="group bg-gray-50 border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center justify-center transition-all duration-300 hover:bg-purple-300 hover:border-purple-300 hover:shadow-md my-4">
+                <span class="text-xl font-semibold mb-3 text-gray-800 transition-colors duration-300 group-hover:text-purple-600">Enviar Correos</span>
+                <span class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-purple-500">Comunícate con los usuarios registrados</span>
+            </a>
+
+            <!-- Gestión de Usuarios -->
+            <a href="{{ url_for('admin.manage_users') }}" class="group bg-gray-50 border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col items-center justify-center transition-all duration-300 hover:bg-purple-300 hover:border-purple-300 hover:shadow-md my-4">
+                <span class="text-xl font-semibold mb-3 text-gray-800 transition-colors duration-300 group-hover:text-purple-600">Gestionar Usuarios</span>
+                <span class="text-sm text-gray-600 transition-colors duration-300 group-hover:text-purple-500">Ver, actualizar o eliminar cuentas de usuarios</span>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

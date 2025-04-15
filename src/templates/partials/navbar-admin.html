@@ -12,13 +12,7 @@
             <div class="hidden md:block">
                 <ul class="flex items-center space-x-8">
                     <li>
-                        <a class="block text-gray-900 hover:text-purple-500 px-3 py-2 rounded-md text-base font-medium transition duration-300" href="{{ url_for('home.index') }}">Inicio</a>
-                    </li>
-                    <li>
-                        <a class="text-gray-900 hover:text-purple-500 px-3 py-2 rounded-md text-base font-medium transition duration-300" href="#">Productos</a>
-                    </li>
-                    <li>
-                        <a class="text-gray-900 hover:text-purple-500 px-3 py-2 rounded-md text-base font-medium transition duration-300" href="#">Carrito</a>
+                        <a class="block text-gray-900 hover:text-purple-500 px-3 py-2 rounded-md text-base font-medium transition duration-300" href="{{ url_for('home.index') }}">Vista usuarios</a>
                     </li>
                     {% if current_user.is_authenticated %}
                     <!--Authenticated user-->
@@ -91,7 +85,6 @@
         </div>
     </div>
 </nav>
-
 <script>
     // Script para el menú móvil
     const menuBtn = document.getElementById('menu-btn');

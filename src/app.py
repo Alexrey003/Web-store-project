@@ -1,6 +1,6 @@
 # Libraries
 from flask import Flask
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 from flask_wtf.csrf import CSRFProtect
 
 # Modules
@@ -29,7 +29,11 @@ def create_app():
         user_data = cursor.fetchone()
         cursor.close()
         return User.get(user_data) if user_data else None
-
+    
+    @app.context_processor
+    def inject_user():
+        return dict(current_user=current_user)
+    
     # Inicializar rutas
     init_routes(app)
 
