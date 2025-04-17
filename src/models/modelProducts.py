@@ -29,11 +29,11 @@ class ModelHardware():
             return False
         
     @classmethod
-    def delete_hardware(self, db, product_id):
+    def delete_hardware(self, db, hardware_id):
         try:
             cursor = db.cursor()
-            sql = "DELETE FROM hardware WHERE id = %s"
-            cursor.execute(sql, (product_id,))
+            sql = "DELETE FROM hardware WHERE hardware_id = %s"
+            cursor.execute(sql, (hardware_id,))
             db.commit()
             cursor.close()
             print("Hardware deleted successfully")
@@ -56,10 +56,11 @@ class ModelHardware():
         except Exception as e:
             print(f"Error updating hardware: {e}")
             return False
+        
 class ModelVideogame():
 # This class is used to manage the VIDEOGAMES in the database.
     @classmethod
-    def get_all_videogame(self, db):
+    def get_all_videogames(self, db):
         try:
             cursor = db.cursor(dictionary=True)
             sql = "SELECT * FROM videogames"
@@ -76,7 +77,7 @@ class ModelVideogame():
     def add_videogame(self, db, game_name, game_description, genre, platforms, price, stock, img_url, release_date, developer):
         try:
             cursor = db.cursor()
-            sql = "INSERT INTO videogames (game_name, game_description, genre, brand, platforms, stock, img_url, release_date, developer) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            sql = "INSERT INTO videogames (game_name, game_description, genre, platforms, price, stock, img_url, release_date, developer) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
             values = (game_name, game_description, genre, platforms, price, stock, img_url, release_date, developer)
             cursor.execute(sql, values)
             db.commit()
