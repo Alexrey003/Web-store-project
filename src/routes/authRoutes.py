@@ -8,6 +8,7 @@ from flask_wtf.csrf import CSRFProtect
 from models.modelUsers import ModelUser
 from database.db_mariadb import db_connect
 from models.users import User
+from services.user_controller import validate_user_registration
 
 #Define the blueprints for login and register routes
 auth_bp = Blueprint('auth', __name__)
@@ -38,6 +39,10 @@ def login():
 # Register route for normal users
 @auth_bp.route('/register/user', methods=['GET', 'POST'])
 def register():
+    form_data = request.form
+    if not validate_user_registration(form_data):
+        return redirect(url_for('auth_bp.register'))
+    
     if request.method == 'POST':
         name = request.form.get('name')
         lastname = request.form.get('lastname')
@@ -76,5 +81,5 @@ def register_admin():
 @login_required
 def logout():
     logout_user()
-    flash('You have been logged out.', 'success')
+    # flash('You have been logged out.', 'success')
     return redirect(url_for('home.index'))

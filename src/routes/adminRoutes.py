@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 
 from models.modelProducts import ModelHardware, ModelVideogame
 from database.db_mariadb import db_connect
+from services.product_controller import validate_hardware_data, validate_videogame_data
 
 db = db_connect()
 admin_bp = Blueprint('admin', __name__)
@@ -34,7 +35,7 @@ def manage_products():
         products = ModelVideogame.get_all_videogames(db)
         if search:
             products = [p for p in products if search in p['game_name'].lower()]
-        for p in products:
+        for p in products: #LINEA 37
             p['id'] = p.get('game_id')
         
     return render_template('./admin/manage_products.html', products=products, section=section, search=search)
@@ -45,7 +46,10 @@ def add_product():
     data = request.form
     product_type = data.get('product_type')
     
-    if product_type == "hardware":
+    if product_type == 'hardware':
+        if not validate_hardware_data(data):
+            return redirect(url_for('admin_bp.manage_products', section="hardware"))
+        
         ModelHardware.add_hardware(
             db,
             data['product_name'],
@@ -56,7 +60,11 @@ def add_product():
             int(data['stock']),
             data['img_url']
         )
+        
     else:
+        if not validate_videogame_data(data):
+            return redirect(url_for('admin_bp.manage_products', section='videogames'))
+        
         ModelVideogame.add_videogame(
             db,
             data['game_name'],
@@ -69,6 +77,7 @@ def add_product():
             data['release_date'],
             data['developer']
         )
+    flash("Producto añadido correctamente", "success")
     return redirect(url_for('admin.manage_products', section=product_type))
 
 
@@ -82,7 +91,7 @@ def delete_product(section, product_id):
     elif product_type == "videogames":
         ModelVideogame.delete_videogame(db, product_id)
     
-    return redirect(url_for('admin.manage_products', section=product_type))
+    return redirect(url_for('admin_bp.manage_products', section=product_type))
 
 # ========================== MANAGEMENT USERS ==========================
 # FOR THE MANAGEMENT USERS PANEL

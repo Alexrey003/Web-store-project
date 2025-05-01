@@ -5,6 +5,7 @@
 {% block content %}
 <div class="min-h-screen bg-gray-100 py-8 px-6">
     <div class="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <a href="{{ url_for('admin.index') }}" class="inline-block bg-purple-400 hover:bg-purple-600text-white px-6 py-2 rounded-md text-base font-medium transition duration-300 shadow-md cursor-pointer">Atrás</a>
         <h1 class="text-3xl font-bold text-gray-800 mb-6">Gestión de Productos</h1>
 
         <!-- Selector de tipo de producto -->
@@ -52,6 +53,19 @@
             <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded">Buscar</button>
         </form>
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="p-3 my-2 rounded-lg 
+                    {% if category == 'error' %}bg-red-100 text-red-800
+                    {% elif category == 'success' %}bg-green-100 text-green-800
+                    {% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
         <!-- Tabla de productos -->
         <div class="overflow-x-auto">
             <table class="w-full text-left border border-gray-300">

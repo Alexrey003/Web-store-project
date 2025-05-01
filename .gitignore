@@ -27,10 +27,10 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Archivos de log (si llegas a generarlos)
+# Archivos de log
 *.log
 
-# Bases de datos locales (por si alguna vez haces dumps o sqlite temporal)
+# Bases de datos locales
 *.sqlite3
 *.db
 *.sql

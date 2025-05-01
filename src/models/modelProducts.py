@@ -42,12 +42,13 @@ class ModelHardware():
             print(f"Error deleting hardware: {e}")
             return False
     
+    #AQUI CAMBIE A HARDWARE_ID QUE ES LO QUE TENGO EN MI BASE DE DATOS
     @classmethod
-    def update_hardware(self, db, product_id, product_name, specs, category, brand, price, stock, img_url):
+    def update_hardware(self, db, hardware_id, product_name, specs, category, brand, price, stock, img_url):
         try:
             cursor = db.cursor()
-            sql = "UPDATE hardware SET product_name = %s, specs = %s, category = %s, brand = %s, price = %s, stock = %s, img_url = %s WHERE id = %s"
-            values = (product_name, specs, category, brand, price, stock, img_url, product_id)
+            sql = "UPDATE hardware SET product_name = %s, specs = %s, category = %s, brand = %s, price = %s, stock = %s, img_url = %s WHERE hardware_id = %s"
+            values = (product_name, specs, category, brand, price, stock, img_url, hardware_id)
             cursor.execute(sql, values)
             db.commit()
             cursor.close()
